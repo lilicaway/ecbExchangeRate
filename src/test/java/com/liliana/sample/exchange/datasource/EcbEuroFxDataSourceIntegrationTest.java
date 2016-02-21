@@ -23,7 +23,7 @@ import com.liliana.sample.exchange.model.ExchangeRate;
  * services and making sure we can parse their results.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfiguration.class)
+@ContextConfiguration(classes = DatasourceTestConfiguration.class)
 public class EcbEuroFxDataSourceIntegrationTest {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
