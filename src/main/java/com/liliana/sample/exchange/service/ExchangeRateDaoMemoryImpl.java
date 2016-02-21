@@ -2,14 +2,15 @@ package com.liliana.sample.exchange.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.liliana.sample.exchange.model.ExchangeRate;
 
-@Service
+@Repository
 public class ExchangeRateDaoMemoryImpl implements ExchangeRateDao {
 
     private final ConcurrentMap<LocalDate, ConcurrentMap<String, BigDecimal>> data = new ConcurrentHashMap<>();
@@ -37,6 +38,11 @@ public class ExchangeRateDaoMemoryImpl implements ExchangeRateDao {
             }
         }
         return exchangeRate;
+    }
+
+    @Override
+    public void saveAllExchangeRate(List<ExchangeRate> exchangeRates) {
+        exchangeRates.forEach(e -> this.saveExchangeRate(e));
     }
 
 }
