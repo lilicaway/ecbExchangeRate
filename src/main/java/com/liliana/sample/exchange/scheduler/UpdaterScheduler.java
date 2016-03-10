@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ import com.liliana.sample.exchange.model.ExchangeRate;
 import com.liliana.sample.exchange.service.ExchangeRateDao;
 
 @Component
+@EnableScheduling
 public class UpdaterScheduler {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
