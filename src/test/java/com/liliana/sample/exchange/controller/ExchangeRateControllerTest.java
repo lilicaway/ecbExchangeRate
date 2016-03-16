@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -24,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.liliana.sample.exchange.bussiness.BussinessTestConfiguration;
 import com.liliana.sample.exchange.bussiness.CurrencyConverter;
 import com.liliana.sample.exchange.model.ExchangeRate;
-import com.liliana.sample.exchange.service.ExchangeRateDaoMemoryImpl;
+import com.liliana.sample.exchange.service.ExchangeRateDao;
 import com.liliana.sample.exchange.service.ServiceTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,7 +40,8 @@ public class ExchangeRateControllerTest {
     // We force it to be in memory, so in the future we can use one that uses a
     // real data store and we don't need to change this test
     @Autowired
-    private ExchangeRateDaoMemoryImpl exchangeRateDao;
+    @Qualifier("exchangeRateDao")
+    private ExchangeRateDao exchangeRateDao;
     @Autowired
     private CurrencyConverter converter;
 

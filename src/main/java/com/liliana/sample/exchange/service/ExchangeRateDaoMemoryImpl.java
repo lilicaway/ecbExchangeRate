@@ -6,22 +6,24 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.liliana.sample.exchange.model.ExchangeRate;
 
 @Repository
+@Qualifier("exchangeRateDaoMemoryImpl")
 public class ExchangeRateDaoMemoryImpl implements ExchangeRateDao {
 
     private final ConcurrentMap<LocalDate, ConcurrentMap<String, BigDecimal>> data = new ConcurrentHashMap<>();
 
     @Override
     public void saveExchangeRate(ExchangeRate exchangeRate) {
-        ConcurrentMap<String, BigDecimal> dailyData = data.get(exchangeRate.getDate());
+        ConcurrentMap<String, BigDecimal> dailyData = data.get(exchangeRate.getDateAsLocalDate());
 
         if (dailyData == null) {
             dailyData = new ConcurrentHashMap<>();
-            data.put(exchangeRate.getDate(), dailyData);
+            data.put(exchangeRate.getDateAsLocalDate(), dailyData);
         }
         dailyData.put(exchangeRate.getCurrencyCode(), exchangeRate.getRate());
 

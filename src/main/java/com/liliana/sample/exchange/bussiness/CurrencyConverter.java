@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -31,6 +32,7 @@ public class CurrencyConverter {
 
     @Autowired
     @VisibleForTesting
+    @Qualifier("exchangeRateDao")
     ExchangeRateDao exchangeRateDao;
 
     // use system's date as default

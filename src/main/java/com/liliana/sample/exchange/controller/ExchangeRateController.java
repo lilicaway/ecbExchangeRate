@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +25,7 @@ import com.liliana.sample.exchange.service.ExchangeRateDao;
 public class ExchangeRateController {
 
     @Autowired
+    @Qualifier("exchangeRateDao")
     private ExchangeRateDao exchangeRateDao;
 
     @Autowired

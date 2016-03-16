@@ -10,6 +10,8 @@ import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import com.liliana.sample.exchange.service.ExchangeRateDao;
+
 @SpringBootApplication
 public class Application {
 
@@ -31,5 +33,12 @@ public class Application {
         backOffPolicy.setMaxInterval(Duration.ofHours(5).toMillis());
         template.setBackOffPolicy(backOffPolicy);
         return template;
+    }
+
+    @Bean
+    @Qualifier("exchangeRateDao")
+    public ExchangeRateDao getExchangeRateDao(
+            @Qualifier("exchangeRateDaoMySqlImpl") ExchangeRateDao exchangeRateDao) {
+        return exchangeRateDao;
     }
 }

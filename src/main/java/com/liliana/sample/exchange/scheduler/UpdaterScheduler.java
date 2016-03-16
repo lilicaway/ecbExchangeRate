@@ -26,6 +26,7 @@ public class UpdaterScheduler {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
+    @Qualifier("exchangeRateDao")
     ExchangeRateDao exchangeRateDao;
 
     @Autowired
