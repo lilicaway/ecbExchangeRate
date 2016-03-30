@@ -27,7 +27,7 @@ public class ExchangeRateDaoMemoryImplTest {
         exchangeRateDao.saveExchangeRate(expectedExchangeRate);
 
         ExchangeRate actualExchangeRate = exchangeRateDao.retrieveExchangeRate(
-                expectedExchangeRate.getDateAsLocalDate(), expectedExchangeRate.getCurrencyCode());
+                expectedExchangeRate.getDate(), expectedExchangeRate.getCurrencyCode());
 
         assertEquals(expectedExchangeRate, actualExchangeRate);
     }

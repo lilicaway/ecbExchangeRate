@@ -2,18 +2,20 @@ package com.liliana.sample.exchange.service.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.liliana.sample.exchange.model.ExchangeRate;
-import com.liliana.sample.exchange.model.ExchangeRate.ExchangeRateId;
+import com.liliana.sample.exchange.service.repository.ExchangeRateEntity.ExchangeRateId;
 
 public interface ExchangeRateRepository extends
-        CrudRepository<ExchangeRate, ExchangeRate.ExchangeRateId> {
+        CrudRepository<ExchangeRateEntity, ExchangeRateId> {
+
+    // We don't really need to declare these methods here, since they are
+    // inherited anyway. We only add them here as documentation because they are
+    // the methods we care about.
+    @Override
+    public <S extends ExchangeRateEntity> S save(S entity);
 
     @Override
-    public <S extends ExchangeRate> S save(S entity);
+    public ExchangeRateEntity findOne(ExchangeRateId id);
 
     @Override
-    public ExchangeRate findOne(ExchangeRateId id);
-
-    @Override
-    public <S extends ExchangeRate> Iterable<S> save(Iterable<S> entities);
+    public <S extends ExchangeRateEntity> Iterable<S> save(Iterable<S> entities);
 }

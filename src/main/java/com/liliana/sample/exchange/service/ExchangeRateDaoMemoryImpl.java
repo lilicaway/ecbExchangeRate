@@ -19,11 +19,11 @@ public class ExchangeRateDaoMemoryImpl implements ExchangeRateDao {
 
     @Override
     public void saveExchangeRate(ExchangeRate exchangeRate) {
-        ConcurrentMap<String, BigDecimal> dailyData = data.get(exchangeRate.getDateAsLocalDate());
+        ConcurrentMap<String, BigDecimal> dailyData = data.get(exchangeRate.getDate());
 
         if (dailyData == null) {
             dailyData = new ConcurrentHashMap<>();
-            data.put(exchangeRate.getDateAsLocalDate(), dailyData);
+            data.put(exchangeRate.getDate(), dailyData);
         }
         dailyData.put(exchangeRate.getCurrencyCode(), exchangeRate.getRate());
 

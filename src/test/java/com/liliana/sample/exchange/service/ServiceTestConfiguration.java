@@ -15,7 +15,8 @@ import org.springframework.context.annotation.FilterType;
 public class ServiceTestConfiguration {
     @Bean
     @Qualifier("exchangeRateDao")
-    public ExchangeRateDao getExchangeRateDao(ExchangeRateDaoMemoryImpl exchangeRateDao) {
+    public ExchangeRateDao getExchangeRateDao(
+            @Qualifier("exchangeRateDaoMemoryImpl") ExchangeRateDao exchangeRateDao) {
         return exchangeRateDao;
     }
 }

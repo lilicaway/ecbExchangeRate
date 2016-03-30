@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.liliana.sample.exchange.model.ExchangeRate;
+import com.liliana.sample.exchange.service.ServiceTestConfiguration;
 
 /**
  * Note that this Integration test accesses network which is in general a bad
@@ -23,7 +24,7 @@ import com.liliana.sample.exchange.model.ExchangeRate;
  * services and making sure we can parse their results.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DatasourceTestConfiguration.class)
+@ContextConfiguration(classes = { ServiceTestConfiguration.class, DatasourceTestConfiguration.class })
 public class EcbEuroFxDataSourceIntegrationTest {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
