@@ -2,6 +2,7 @@ package com.liliana.sample.exchange.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.liliana.sample.exchange.bussiness.CurrencyConverter;
 import com.liliana.sample.exchange.bussiness.CurrencyConverter.CurrencyNotFoundException;
@@ -30,6 +32,14 @@ public class ExchangeRateController {
 
     @Autowired
     private CurrencyConverter converter;
+
+    @RequestMapping(value = "/ecbApp")
+    @ResponseStatus(HttpStatus.OK)
+    public ModelAndView ecb(Map<String, Object> model) {
+        // model.put("time", new Date());
+        // model.put("message", "Hola");
+        return new ModelAndView("ecb", model);
+    }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, value = "/api/exchangeRate", produces = MediaType.APPLICATION_JSON_VALUE)
