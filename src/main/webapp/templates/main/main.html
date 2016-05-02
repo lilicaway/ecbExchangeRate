@@ -1,0 +1,24 @@
+<form class="form-inline">
+    <div class="form-group">
+        <label for="fromCurrency">From currency</label> <input
+            type="text" class="form-control" id="fromCurrency"
+            placeholder="CHF" ng-model="mainCtrl.fromCurrency">
+    </div>
+    <div class="form-group">
+        <label for="toCurrency">To currency</label> <input type="text"
+            class="form-control" id="toCurrency" placeholder="EUR"
+            ng-model="mainCtrl.toCurrency">
+    </div>
+    <div class="form-group">
+        <label for="fromAmount">From amount</label> <input type="number"
+            step="any" class="form-control" id="fromAmount"
+            placeholder="1.0" ng-model="mainCtrl.fromAmount">
+    </div>
+    <div class="form-group">
+        <label for="toAmount">To amount</label> <input type="number"
+            step="any" class="form-control" id="toAmount"
+            placeholder="1.0" ng-model="mainCtrl.resultAmount">
+    </div>
+    <button type="submit" class="btn btn-default"
+        ng-click="mainCtrl.doConversion()">Submit</button>
+</form>
